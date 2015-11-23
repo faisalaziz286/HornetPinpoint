@@ -1,0 +1,19 @@
+<ion-view view-title="Search">
+	<ion-content>
+		<label class="item item-input">
+			<i class="icon ion-search placeholder-icon"></i>
+			<form ng-submit="searchUser(query)">
+				<input type="search" placeholder="Search" ng-model="query" autofocus/>
+			</form>
+		</label>
+		
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="m in members" type="item-text-wrap" href="#/tab/locate/{{m.member.account.username}}">
+        <img ng-src="{{m.member.thumbnail_large_url}}">
+        <h2>{{m.member.display_name}}</h2>
+        <p><b>{{m.member.online ? "Online" : "Offline"}}</b> {{m.member.distance}}km</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
