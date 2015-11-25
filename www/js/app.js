@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('hpinpoint', ['ionic', 'hpinpoint.controllers', 'hpinpoint.services'])
+angular.module('hpinpoint', ['ionic', 'ngCordova', 'hpinpoint.controllers', 'hpinpoint.services', 'http-auth-interceptor'])
 
-		.run(function($ionicPlatform) {
+		.run(function($ionicPlatform, $ionicLoading, $rootScope, Hornet, authService) {
 				$ionicPlatform.ready(function() {
 						// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
 						// for form inputs)
@@ -20,6 +20,19 @@ angular.module('hpinpoint', ['ionic', 'hpinpoint.controllers', 'hpinpoint.servic
 								// org.apache.cordova.statusbar required
 								StatusBar.styleDefault();
 						}
+
+						$rootScope.$on('event:auth-loginRequired', function(event, data) {
+								$ionicLoading.show({template: 'Authenticating'});
+								Hornet.startSession().then(function(response) {
+										authService.loginConfirmed('success', function(config){
+												config.headers["Authorization"] = Hornet.http_headers.Authorization();
+												return config;
+										});
+										$ionicLoading.hide();
+								}, function(response){
+										$ionicLoading.show({template: response});
+								});
+						});
 				});
 		})
 
@@ -61,32 +74,11 @@ angular.module('hpinpoint', ['ionic', 'hpinpoint.controllers', 'hpinpoint.servic
 						})
 						.state('locate', {
 								url: '/locate/:userId',
-								views: {
-										'': {
-												templateUrl: 'templates/locate-map.html',
-												controller: 'LocateCtrl'
-										}
-								}
+								templateUrl: 'templates/locate-map.html',
+								controller: 'LocateCtrl'
 						});
 
 				// if none of the above states are matched, use this as the fallback
 				$urlRouterProvider.otherwise('/tab/search');
 				
-		})
-		/*.config(function ($httpProvider) {
-				$httpProvider.interceptors.push(function (HttpHeaders) {
-						return {
-								'request': function (config) {
-										for(var attrname in HttpHeaders.http_headers) {
-												var a = HttpHeaders.http_headers[attrname];
-												if(typeof a === "function")
-														a = a();
-												
-												config.headers[attrname] = a;
-										}
-
-										return config;
-								}
-						}
-				})
-		});*/
+		});

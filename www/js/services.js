@@ -1,10 +1,10 @@
 angular.module('hpinpoint.services', ['ionic'])
 
-		.factory('Hornet', function($http, $q) {
+		.factory('Hornet', function($http, $q, CurrentLocation) {
 				var baseURL = "https://gethornet.com/api/v3";
 				var service = {};
 				var earthR = 6371;
-				var location = {lat: -30.0331, lon: -51.2300};
+				// var location = {lat: -30.0331, lon: -51.2300};
 				var session;
 				var hwid;
 				
@@ -22,11 +22,15 @@ angular.module('hpinpoint.services', ['ionic'])
 								return hwid;
 						},
 						'X-Device-Location': function() {
+								var location = CurrentLocation.getLocation();
+								
 								if(location != undefined)
 										return location.lat + "," + location.lon;
 
 								return undefined;
 						}};
+
+				service.http_headers = http_headers;
 				
 				function rad(deg) {
 						return deg * Math.pi / 180;
@@ -81,26 +85,21 @@ angular.module('hpinpoint.services', ['ionic'])
 				service.startSession = function () {
 						hwid = hwid || makeid();
 
-						location = location || {lat: -30.0331, lon: -51.2300};
-						
 						var promise = $http.post(baseURL+"/session.json",
 																		 {"session": {"id": hwid,"provider": "UDID"}},
 																		 {headers: http_headers});
+
 						
 						promise.then(function(response) {
 								session = response.data.session.access_token;
 						});
-
+						
 						return promise;
 				}
 
 				service.searchUser = function (string) {
 						return $http.get(baseURL+"/members/search?page=1&per_page=50&username=@"+string,
-														{headers: http_headers});
-				}
-
-				service.setLocation = function (loc) {
-						location = loc;
+														 {headers: http_headers});
 				}
 
 				service.getDistance = function (userId, loc) {
@@ -128,7 +127,7 @@ angular.module('hpinpoint.services', ['ionic'])
 				service.pinpoint = function (userID) {
 						var defer = $q.defer();
 						var pd = Infinity;
-						var loc = location;
+						var loc = CurrentLocation.getLocation();
 
 						function worker() {
 								getDistance(userID, loc).then(
@@ -160,20 +159,24 @@ angular.module('hpinpoint.services', ['ionic'])
 						
 						return defer.promise;
 				}
-
-				service.startSession();
 				
 				return service;
-		}); /*
-		.factory('HttpHeaders', function() {
-				var service = {};
+		}).factory('CurrentLocation', function ($cordovaGeolocation) {
+				var location;
+				
+				$cordovaGeolocation.watchPosition({timeout: 5000, enableHighAccuracy: false})
+						.then(null, function(err) {
+								location = undefined;
+								$rootScope.broadcast('event:LocationServiceError', err);
+						}, function(position) {
+								location = {lat: position.coords.latitude,
+														lon: position.coords.longitude};
+						});
 
-				service.http_headers = {};
-
-				service.add = function (headers) {
-						for(var attrname in headers)
-								service.http_headers[attrname] = headers[attrname];
+				return {
+						getLocation: function() {
+								return location;
+						}
 				}
+		});
 
-				return service;
-		}); */
