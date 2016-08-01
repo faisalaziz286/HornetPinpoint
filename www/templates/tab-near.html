@@ -1,0 +1,20 @@
+<ion-view view-title="Nearby">
+	<ion-content>
+		<ion-refresher
+			 pulling-text="Pull to refresh..."
+			 on-refresh="refresh()">
+		</ion-refresher>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="m in members" type="item-text-wrap" ng-click="goLocate(m)">
+        <img ng-src="{{m.member.thumbnail_large_url}}">
+        <h2>{{m.member.display_name}}</h2>
+        <p>@{{m.member.account.username}} <b>{{m.member.online ? "Online" : "Offline"}}</b> {{dispDist(m.member.distance)}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+		<ion-infinite-scroll
+			 icon="ion-loading-c"
+			 on-infinite="loadMoreData()">
+		</ion-infinite-scroll>
+  </ion-content>
+</ion-view>

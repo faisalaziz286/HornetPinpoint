@@ -1,10 +1,12 @@
 {
-  "name": "HelloIonic",
+  "name": "HornetPinpoint",
   "private": "true",
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.1.1"
   },
   "dependencies": {
-    "angular-http-auth": "~1.2.2"
+    "angular-http-auth": "~1.2.2",
+    "ngCordova": "^0.1.27-alpha",
+    "jquery": "^3.1.0"
   }
 }
