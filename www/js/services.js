@@ -164,7 +164,7 @@ angular.module('hpinpoint.services', ['ionic'])
 												console.log('Centre Distance ' + d);
 												if(d && (d <= 0.08 || Math.abs(pd-d) < 0.01))
 														defer.resolve({location: loc, distance: d});
-												else if (d - pd > 1)
+												else if (d - pd > pd)
 														defer.reject("Diverging");
 												else {
 														var right_loc = geodist({x: d, y: 0}, loc);
