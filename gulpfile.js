@@ -7,17 +7,29 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 var typescript = require('gulp-tsc');
+var uglify = require('gulp-uglify');
+var ngAnnotate = require('gulp-ng-annotate');
+var babel = require("gulp-babel");
+var plumber = require("gulp-plumber");
+var sourcemaps = require('gulp-sourcemaps');
 
 var paths = {
 		sass: ['./scss/**/*.scss'],
 		src: ['./src/**/*.ts']
 };
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['sass', 'compile']);
 
-gulp.tast('compile', function() {
-		gulp.src(paths.src)
-				.pipe(typescrypt())
+gulp.task('compile', function() {
+		return gulp.src(paths.src)
+				.pipe(plumber())
+				.pipe(typescript({
+						emitError: false
+				}))
+				.pipe(babel({
+						presets: ['es2015', 'react']
+				}))
+				.pipe(concat('app.js'))
 				.pipe(gulp.dest('www/js/'));
 });
 

@@ -1,0 +1,32 @@
+{
+  "name": "HornetPinpoint",
+  "globalDependencies": {
+    "BatteryStatus": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/BatteryStatus.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "Camera": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Camera.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "Contacts": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Contacts.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "Device": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Device.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "DeviceMotion": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/DeviceMotion.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "DeviceOrientation": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/DeviceOrientation.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "Dialogs": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Dialogs.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "FileSystem": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/FileSystem.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "FileTransfer": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/FileTransfer.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "Globalization": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Globalization.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "InAppBrowser": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/InAppBrowser.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "Keyboard": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Keyboard.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "Media": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Media.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "MediaCapture": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/MediaCapture.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "NetworkInformation": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/NetworkInformation.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "Push": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Push.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "Splashscreen": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Splashscreen.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "StatusBar": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/StatusBar.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "Vibration": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/Vibration.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "WebSQL": "github:DefinitelyTyped/DefinitelyTyped/cordova/plugins/WebSQL.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "angular": "registry:dt/angular#1.5.0+20160802155123",
+    "cordova": "github:DefinitelyTyped/DefinitelyTyped/cordova/cordova.d.ts#ea75b2124839a81ade996a2f55a2906c257938eb",
+    "cordova-ionic": "registry:dt/cordova-ionic#0.0.0+20160316155526",
+    "cordova-ionic/plugins/keyboard": "registry:dt/cordova-ionic/plugins/keyboard#0.0.0+20160317120654",
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
+    "ionic": "registry:dt/ionic#0.0.0+20160501155303",
+    "jquery": "registry:dt/jquery#1.10.0+20160704162008"
+  }
+}

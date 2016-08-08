@@ -1,0 +1,22 @@
+{
+		"exclude": [
+				"node_modules",
+				"plugins",
+				"scss",
+				"platforms",
+				"www",
+				"hooks"
+		],
+		"compilerOptions": {
+				"target": "ES2015",
+				"allowNonTsExtensions": true,
+				"module": "commonjs",
+				"sourceMap": true,
+				"isolatedModules": true,
+				"noEmitOnError": false,
+				"rootDir": ".",
+				"emitDecoratorMetadata": true,
+				"experimentalDecorators": true
+		},
+		"compileOnSave": false
+}

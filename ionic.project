@@ -2,7 +2,7 @@
   "name": "HornetPinpoint",
   "app_id": "",
   "gulpStartupTasks": [
-    "sass",
+    "default",
     "watch"
   ],
   "watchPatterns": [
