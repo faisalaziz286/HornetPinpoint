@@ -23,13 +23,15 @@ gulp.task('default', ['sass', 'compile']);
 gulp.task('compile', function() {
 		return gulp.src(paths.src)
 				.pipe(plumber())
-				.pipe(typescript({
-						emitError: false
-				}))
+				.pipe(sourcemaps.init())
+				.pipe(typescript())
+				.pipe(concat('app.js'))
 				.pipe(babel({
 						presets: ['es2015', 'react']
 				}))
-				.pipe(concat('app.js'))
+				.pipe(ngAnnotate({add: true}))
+				.pipe(uglify({mangle: true}))
+				.pipe(sourcemaps.write('./'))
 				.pipe(gulp.dest('www/js/'));
 });
 
