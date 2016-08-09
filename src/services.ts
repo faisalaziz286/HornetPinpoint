@@ -1,5 +1,6 @@
 /// <reference path="./common.ts" />
 
+
 angular.module('hpinpoint.services', ['ionic'])
 
     .factory('Hornet', function ($http, $q, CurrentLocation, $rootScope, authService) {
@@ -125,7 +126,6 @@ angular.module('hpinpoint.services', ['ionic'])
             return $http.get(baseURL + '/members/near?page=' + page + '&per_page=50',
                 { headers: http_headers });
         }
-
 
         function getDistance(userId: string, loc: location) {
             var h = Object.assign({}, http_headers);

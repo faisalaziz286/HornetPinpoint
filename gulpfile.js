@@ -54,7 +54,8 @@ gulp.task('compile', ['paths'], function() {
 				.pipe(newer('www/js/app.js'))
 				.pipe(sourcemaps.init())
 				.pipe(typescript({
-						outFile: 'app.js'
+						outFile: 'app.js',
+						noImplicitAny: true
 				}))
 				.pipe(babel({
 						presets: ['es2015', 'react'],
