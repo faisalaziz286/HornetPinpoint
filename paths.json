@@ -1,0 +1,10 @@
+{
+		"sass": ["scss/**/*.scss"],
+		"src": ["src/**/*.ts"],
+		"libs": ["lib/es6-shim/es6-shim.js",
+						 "lib/jquery/dist/jquery.js",
+						 "lib/ionic/js/ionic.bundle.js",
+						 "lib/ngCordova/dist/ng-cordova.js",
+						 "lib/angular-http-auth/src/http-auth-interceptor.js"],
+		"res": ["lib/ionic/**/*.{ttf,woff,eof,svg}"]
+}
