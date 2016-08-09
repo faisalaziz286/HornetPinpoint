@@ -1,5 +1,3 @@
-"use strict";
-
 var fs = require('fs');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
@@ -18,7 +16,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var changed = require('gulp-changed');
 var newer = require('gulp-newer');
 var gulpif = require('gulp-if');
-
+var typings = require('gulp-typings');
 
 var paths = {};
 
@@ -99,7 +97,14 @@ gulp.task('watch', ['paths'], function() {
 		
 });
 
-gulp.task('install', ['git-check'], function(done) {
+gulp.task('install', ['installBower', 'installTypings']);
+
+gulp.task('installTypings', ['git-check'], function() {
+		return gulp.src('./typings.json')
+				.pipe(typings());
+});
+
+gulp.task('installBower', ['git-check'], function(done) {
 		return bower.commands.install()
 				.on('log', function(data) {
 						gutil.log('bower', gutil.colors.cyan(data.id), data.message);

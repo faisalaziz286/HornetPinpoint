@@ -1,12 +1,12 @@
 {
   "name": "HornetPinpoint",
-  "app_id": "",
+  "app_id": "com.thesiriusproject.hornetpinpoint",
   "gulpStartupTasks": [
     "default",
     "watch"
   ],
   "watchPatterns": [
     "www/**/*",
-    "!www/lib/**/*"
+    "!www/**/*~"
   ]
 }

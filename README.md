@@ -4,9 +4,11 @@ This app is based on ionic framework for mobile support on both android and iOS.
 
 ##Instalation
 
-To sideload into iOS and android, first install nodejs and ionic with `npm -g ionic`.
+To sideload into iOS and android, first install nodejs, then install ionic and gulp with `npm -g ionic gulp`.
 
-After checking out the sources, `npm install` on the project root to install further dependencies.
+After checking out the sources, `npm install` and `gulp install` on the project root to install further dependencies.
+
+Add the desired target platforms with `ionic platform add <platform name>`, in order to list available platforms enter `ionic platform`
 
 In order to generate the apk perform `ionic build --release android`, provided that android sdk is previously installed.
 
